@@ -32,8 +32,9 @@ class VQAv2(Dataset):
         for qa in tqdm(qas):
             que = np.ones(seqlen, dtype=np.int64) * len(word2idx)
             for i, word in enumerate(qa['question_toked']):
-                if word in word2idx:
-                    que[i] = word2idx[word]
+                if i < 14:
+                    if word in word2idx:
+                        que[i] = word2idx[word]
 
             ans = np.zeros(len(idx2ans), dtype=np.float32)
             for a, s in qa['answer']:

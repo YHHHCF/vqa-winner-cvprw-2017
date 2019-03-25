@@ -141,7 +141,9 @@ def main():
         return
 
     # Train
+    
     for epoch in range(last_epoch, args.epoch):
+        print("begin epoch", epoch)
         train(train_loader, model, optim, epoch, device, logger)
         score = evaluate(val_loader, model, epoch, device, logger)
         bscore = save_ckpt(score, bscore, epoch, model, optim, args.save, logger)
